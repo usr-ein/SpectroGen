@@ -1,4 +1,5 @@
 <html>
+<<<<<<< HEAD
 	<head>
 		<title>Sketchpad</title>
 		<link rel="stylesheet" href="bootstrap.min.css"> <!-- Bootstrap 4 -->
@@ -81,5 +82,89 @@ function init() {
 		<script src="riffwave.js"></script> 
 		<script src="bootstrap.min.js"></script> 
 	</body>
+=======
+		<head>
+				<title>Sketchpad</title>
+				<link rel="stylesheet" href="bootstrap.min.css"> <!-- Bootstrap 4 -->
+				<script defer src="fontawesome-all.js"></script> <!-- Icons -->
+				<link rel="stylesheet" href="style.css">
+		</head>
+
+		<body onload="init()">
+				<div class="custom-container">
+						<div class="row">
+								<div class="col-md-3 panel">
+										<h2>Draw your song</h2>
+										Draw something by holding down the mouse button or using single clicks.<br/><br/>
+										On a touchscreen, tapping the area will register as a single mouse click.<br/><br/>
+										Then hit "Play" and it'll play the sound corresponding to the image you just drew<br/><br/>
+
+										<div class="form-group">
+												<div class="inline">
+														<label>Pensize</label>
+														<input id="pensize" type="range" min="5" max="50" step="1" value="12">	
+												</div>
+												<div class="inline">
+														<label>Intensity</label>
+														<input id="alpha" type="range" min="0" max="255" step="1" value="200">	
+												</div>
+										</div>
+										<p>Pen type</p>
+										<div class="form-group">
+												<div class="inline">
+														<input type="radio" name="pentype" id="selectBrush" checked>
+														<label>Brush</label>
+												</div>
+												<div class="inline">
+														<input type="radio" name="pentype" id="selectLine">
+														<label>Line</label>
+												</div>
+										</div>
+										<p>Colour</p>
+										<div class="form-group">
+												<div class="inline">
+														<input type="radio" name="colour" id="rainbowColour" checked>
+														<label>Rainbow</label>
+												</div>
+												<div class="inline">
+														<input type="radio" name="colour" id="randomColour">
+														<label>Random</label>
+												</div>
+												<div class="inline">
+														<input type="radio" name="colour" id="customColour">
+														<input id="pencolour" type="color">
+														<label>Custom</label>
+												</div>
+										</div>
+
+										<p>Duration</p>
+										<input type="number" min="1" max="60" value="5" id="soundDuration"/>
+										<hr>
+										<div class="form-group btn-group">
+												<button class="btn btn-lg btn-success" onclick="playSound();"><i class="fas fa-music"></i> Play</button>
+												<button class="btn btn-lg btn-info" onclick="saveSound('drawing.wav');"><i class="fas fa-download"></i> Save</button>
+												<button class="btn btn-lg btn-danger" onclick="clearCanvas(canvas,ctx);"><i class="fas fa-trash"></i> Clear</button>
+										</div>
+								</div>
+								<div class="col-md-9">
+										<canvas id="sketchpad" height="1000" width="1300">
+										</canvas><br>
+								</div>
+						</div>
+				</div>
+				<!-- Custom -->
+				<script src="sketchpad.js"></script> 
+				<script src="canvasToSound.js"></script>
+				<!-- Init func -->
+				<script>
+function init() {
+		initSketchpad(); // Init the sketchpad part
+}
+				</script>
+				<!-- Libs -->
+				<script src="riffwave.js"></script> 
+				<script src="bootstrap.min.js"></script> 
+		</body>
+>>>>>>> b5d6a53c736f817417a15267715855d95b86577c
 </html>
 
