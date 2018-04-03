@@ -1,27 +1,30 @@
 /* Some CSS styling */
 body {
-				/* Prevent nearby text being highlighted when accidentally dragging mouse outside confines of the canvas */
-				-webkit-touch-callout: none;
-				-webkit-user-select: none;
-				-khtml-user-select: none;
-				-moz-user-select: none;
-				-ms-user-select: none;
-				user-select: none;
+	/* Prevent nearby text being highlighted when accidentally dragging mouse outside confines of the canvas */
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	color: #FFF;
+	background-color: #333;
 }
 .form-group {
-				padding-left: 20px;
+	padding-left: 20px;
 }
 
 .custom-container {
-				padding: 5px 10px 5px 10px;
+	padding: 5px 10px 5px 10px;
 }
 .panel {
-				background-color:#def;
-				padding:10px;
-				border-radius:4px;
+	background-color: #666;
+	padding:10px;
+	border-radius:4px;
 }
 #sketchpad {
-				border:2px solid #888;
-				border-radius:4px;
-				position:relative; /* Necessary for correct mouse co-ords in Firefox */
+	border:2px solid #888;
+	border-radius:4px;
+	position:relative; /* Necessary for correct mouse co-ords in Firefox */
 }
