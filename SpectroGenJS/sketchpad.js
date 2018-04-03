@@ -163,6 +163,11 @@ function getMousePos(e) {
 		mouseX = e.layerX;
 		mouseY = e.layerY;
 	}
+
+	// The actual pixel size (html) vs the render size (css) is
+	// different by a factor of two, hence the factor
+	mouseX *= 2;
+	mouseY *= 2;
 }
 
 function initSketchpad(){
