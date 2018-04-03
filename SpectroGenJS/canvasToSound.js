@@ -5,7 +5,7 @@ function getAlphaAtPos(x,y,canvasData,canvasWidth){
 	return canvasData.data[index + 3];
 }
 
-function soundCanvas(canvas, duration) {
+function soundCanvas(canvas, duration, max_freq) {
 	let ctx = canvas.getContext('2d');
 	// Very costly in ressources, do that just once
 	let canvasData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -14,7 +14,6 @@ function soundCanvas(canvas, duration) {
 	var data = [];
 	wave.header.sampleRate = 44100;
 	let max_frame = wave.header.sampleRate * duration;
-	let max_freq = 6000;
 	let width = canvas.width;
 	let height = canvas.height;
 
@@ -44,8 +43,9 @@ function soundCanvas(canvas, duration) {
 }
 function playSound() {
 	let canvas = document.getElementById('sketchpad');
-	let duration = 5;
-	var wave = soundCanvas(canvas, duration);
+	let duration = document.getElementById('soundDuration').value;
+	let maxFreq = document.getElementById('maxFreq').value;
+	var wave = soundCanvas(canvas, duration, maxFreq);
 	var audio = new Audio();
 	audio.src = wave.dataURI;
 	audio.play();
@@ -53,8 +53,9 @@ function playSound() {
 
 function saveSound(filename) {
 	let canvas = document.getElementById('sketchpad');
-	let duration = 5;
-	let uri = soundCanvas(canvas, duration).dataURI;
+	let duration = document.getElementById('soundDuration').value;
+	let maxFreq = document.getElementById('maxFreq').value;
+	let uri = soundCanvas(canvas, duration, maxFreq).dataURI;
 	// Construct the <a> element
 	var link = document.createElement("a");
 	link.download = filename;
