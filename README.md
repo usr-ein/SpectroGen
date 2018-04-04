@@ -46,7 +46,8 @@ on the produced music but it's pretty so I added it anyway.
 
 The downloaded file can be rendered in Audacity as a spectrogram and on it will appear the drawing you did on the HTML5 canvas.
 
-I will very soon publish a live version of this on my website for internet people (you) to fiddle with.
+<s>I will very soon publish a live version of this on my website for internet people (you) to fiddle with.</s>
+[It's live but still WIP](http://sam1902.ddns.net/spectrogen)
 
 All this project is opensource, if you use the sources please credit me that'd be nice of you.
 Contact me if you want to collaborate. Cheerio !
