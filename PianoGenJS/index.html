@@ -1,0 +1,117 @@
+<html>
+	<head>
+		<title>Piano Gen</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/bootstrap.min.css"> <!-- Bootstrap 4 -->
+		<script defer src="script/fontawesome-all.js"></script> <!-- Icons -->
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+
+	<body onload="init()">
+		<div class="custom-container">
+			<div class="row">
+				<div class="col-md-3 panel">
+					<h2>Draw your piano song</h2>
+					Draw something by holding down the mouse button or using single clicks.<br/><br/>
+					On a touchscreen, tapping the area will register as a single mouse click.<br/><br/>
+					Then hit "Play" and it'll play the sound corresponding to the image you just drew<br/><br/>
+					The height correspond to octaves, the width is the time, the colour is the note you play:<br/><br/>
+					<table class="table table-dark">
+						<tr>
+							<th>Do/C</th>
+							<th>Re/D</th>
+							<th>Mi/E</th>
+							<th>Fa/F</th>
+							<th>Sol/G</th>
+							<th>La/A</th>
+							<th>Si/B</th>
+						</tr>
+						<tr style="font-weight:bold;">
+							<td style="color: green;">Green</td>
+							<td style="color: yellow;">Yellow</td>
+							<td style="color: orange;">Orange</td>
+							<td style="color: red;">Red</td>
+							<td style="color: pink;">Pink</td>
+							<td style="color: purple;">Purple</td>
+							<td style="color: blue;">Blue</td>
+						</tr>
+					</table>
+
+					<div class="form-group">
+						<div class="inline">
+							<label>Pensize</label>
+							<input id="pensize" type="range" min="5" max="50" step="1" value="30">	
+						</div>
+						<div class="inline">
+							<label>Intensity</label>
+							<input id="alpha" type="range" min="0" max="255" step="1" value="200">	
+						</div>
+					</div>
+					<p>Pen type</p>
+					<div class="form-group">
+						<div class="inline">
+							<input type="radio" name="pentype" id="selectBrush" checked>
+							<label>Brush</label>
+						</div>
+						<div class="inline">
+							<input type="radio" name="pentype" id="selectLine">
+							<label>Line</label>
+						</div>
+					</div>
+					<p>Colour</p>
+					<div class="form-group">
+						<div class="inline">
+							<input type="radio" name="colour" id="rainbowColour" checked>
+							<label>Rainbow</label>
+						</div>
+						<div class="inline">
+							<input type="radio" name="colour" id="randomColour">
+							<label>Random</label>
+						</div>
+						<div class="inline">
+							<input type="radio" name="colour" id="customColour">
+							<input id="pencolour" type="color">
+							<label>Custom</label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="inline">
+							<label>Duration</label>
+							<input type="number" min="1" max="60" value="5" id="soundDuration"/>
+						</div>
+						<div class="inline">
+							<label>Max frequency</label>
+							<input type="number" min="1" max="22000" value="6000" id="maxFreq"/>
+						</div>
+					</div>
+					
+					<hr>
+					<div class="form-group btn-group">
+						<button class="btn btn-lg btn-success" onclick="playSound();"><i class="fas fa-music"></i> Play</button>
+						<button class="btn btn-lg btn-info" onclick="saveSound('drawing.wav');"><i class="fas fa-download"></i> Save</button>
+						<button class="btn btn-lg btn-danger" onclick="clearCanvas(canvas,ctx);"><i class="fas fa-trash"></i> Clear</button>
+					</div>
+				</div>
+				<div class="col-md-9">
+					<canvas id="sketchpad" height="2000" width="2600">
+					</canvas><br>
+				</div>
+			</div>
+		</div>
+		<!-- Custom -->
+		<script src="script/sketchpad.js"></script> 
+		<script src="script/canvasToSound.js"></script>
+		<!-- Init func -->
+		<script>
+function init() {
+	initSketchpad(); // Init the sketchpad part
+}
+		</script>
+		<!-- Libs -->
+		<script src="script/riffwave.js"></script> 
+		<script src="script/jquery-3.2.1.slim.min.js"></script> 
+		<script src="script/popper.min.js"></script> 
+		<script src="script/bootstrap.min.js"></script> 
+	</body>
+</html>
+
