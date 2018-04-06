@@ -27,8 +27,6 @@ body {
 	border:2px solid #888;
 	border-radius:4px;
 	position:relative; /* Necessary for correct mouse co-ords in Firefox */
-	height: 1000px; 
-	width: 1300px; 
 }
 
 .custom-container .table td, .custom-container .table th {
