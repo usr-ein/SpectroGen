@@ -1,7 +1,6 @@
 // Variables for referencing the canvas and 2dcanvas context
 var canvas,ctx;
-
-var lastX, lastY; // For line drawing
+var canvasPointList = [];
 
 let sizeCursor = 25;
 var rainbowCounter = 0; // Between 0 and 100
@@ -29,6 +28,17 @@ function drawDot(ctx,x,y,size) {
 	ctx.arc(x, y, size/3, 0, Math.PI*2, true); 
 	ctx.closePath();
 	ctx.fill();
+
+
+	var dot = {
+		x: x, 
+		y: y, 
+		r: r, 
+		g: g, 
+		b: b, 
+		a: a
+	};
+	canvasPointList.push(dot);
 } 
 
 // Draws a line between two X and Y coordinates on the supplied canvas name
@@ -47,10 +57,9 @@ function drawLine(ctx,x1,y1,x2,y2,size) {
 // Clear the canvas context using the canvas width and height
 function clearCanvas(canvas,ctx) {
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-	// Reset the last lines' position
-	lastX = -1; lastY = -1;
 	// Draw the grid for octaves
-	drawHorizontalGrid(canvas, ctx, 5)
+	drawHorizontalGrid(canvas, ctx, 5);
+	canvasPointList = [];
 }
 
 function hexToRgb(hex) {
@@ -129,11 +138,7 @@ function sketchpad_mouseMove(e) {
 }
 
 function drawShit(){
-	if (lastX < 0 && lastY < 0){
-		lastX = mouseX; lastY = mouseY;
-		return;
-	}
-	sizeCursor = parseFloat(document.getElementById("pensize").value) * 6;
+	sizeCursor = parseFloat(document.getElementById("pensize").value) * 2;
 	a = document.getElementById("alpha").value;
 
 	// Avoid doing anything when clicking outside the canvas
@@ -143,12 +148,7 @@ function drawShit(){
 
 	// Let's use black by setting RGB values to 0, and 255 alpha (completely opaque)
 	updateColour();
-	if (document.getElementById("selectBrush").checked){
-		drawDot(ctx, mouseX, mouseY, sizeCursor);
-	}else if (document.getElementById("selectLine").checked){
-		drawLine(ctx, lastX, lastY, mouseX, mouseY, sizeCursor);
-		lastX = mouseX; lastY = mouseY;
-	}
+	drawDot(ctx, mouseX, mouseY, sizeCursor);
 }
 
 // Get the current mouse position relative to the top-left of the canvas
@@ -165,10 +165,6 @@ function getMousePos(e) {
 		mouseY = e.layerY;
 	}
 
-	// The actual pixel size (html) vs the render size (css) is
-	// different by a factor of two, hence the factor
-	mouseX *= 2;
-	mouseY *= 2;
 }
 
 function drawHorizontalGrid(canvas, ctx, rowCount){
@@ -178,7 +174,7 @@ function drawHorizontalGrid(canvas, ctx, rowCount){
 	b = 102
 	a = 255
 	for (row = 1; row < rowCount; row++){
-		drawLine(ctx, 0, row*widthRow, canvas.width, row*widthRow, 20);
+		drawLine(ctx, 0, row*widthRow, canvas.width, row*widthRow, 10);
 	}
 }
 
