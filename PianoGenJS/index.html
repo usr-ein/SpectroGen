@@ -11,10 +11,11 @@
 		<div class="custom-container">
 			<div class="row">
 				<div class="col-md-3 panel">
-					<h2>Draw your piano song</h2>
+					<h2>Draw your song</h2>
 					Draw something by holding down the mouse button or using single clicks.<br/><br/>
 					On a touchscreen, tapping the area will register as a single mouse click.<br/><br/>
 					Then hit "Play" and it'll play the sound corresponding to the image you just drew<br/><br/>
+					<!--
 					The height correspond to octaves, the width is the time, the colour is the note you play:<br/><br/>
 					<table class="table table-dark">
 						<tr>
@@ -36,6 +37,7 @@
 							<td style="color: blue;">Blue</td>
 						</tr>
 					</table>
+					-->
 
 					<div class="form-group">
 						<div class="inline">
@@ -45,17 +47,6 @@
 						<div class="inline">
 							<label>Intensity</label>
 							<input id="alpha" type="range" min="0" max="255" step="1" value="200">	
-						</div>
-					</div>
-					<p>Pen type</p>
-					<div class="form-group">
-						<div class="inline">
-							<input type="radio" name="pentype" id="selectBrush" checked>
-							<label>Brush</label>
-						</div>
-						<div class="inline">
-							<input type="radio" name="pentype" id="selectLine">
-							<label>Line</label>
 						</div>
 					</div>
 					<p>Colour</p>
@@ -79,36 +70,33 @@
 							<label>Duration</label>
 							<input type="number" min="1" max="60" value="5" id="soundDuration"/>
 						</div>
-						<div class="inline">
-							<label>Max frequency</label>
-							<input type="number" min="1" max="22000" value="6000" id="maxFreq"/>
-						</div>
 					</div>
 					
 					<hr>
 					<div class="form-group btn-group">
-						<button class="btn btn-lg btn-success" onclick="playSound();"><i class="fas fa-music"></i> Play</button>
-						<button class="btn btn-lg btn-info" onclick="saveSound('drawing.wav');"><i class="fas fa-download"></i> Save</button>
+						<button class="btn btn-lg btn-success" onclick="play();"><i class="fas fa-music"></i> Play</button>
+						<button class="btn btn-lg btn-info" onclick="save('drawing.wav');"><i class="fas fa-download"></i> Save</button>
 						<button class="btn btn-lg btn-danger" onclick="clearCanvas(canvas,ctx);"><i class="fas fa-trash"></i> Clear</button>
 					</div>
 				</div>
 				<div class="col-md-9">
-					<canvas id="sketchpad" height="2000" width="2600">
+					<canvas id="sketchpad" height="1000" width="2300">
 					</canvas><br>
 				</div>
 			</div>
 		</div>
 		<!-- Custom -->
+		<script src="script/BufferLoader.js"></script> 
 		<script src="script/sketchpad.js"></script> 
 		<script src="script/canvasToSound.js"></script>
 		<!-- Init func -->
 		<script>
 function init() {
 	initSketchpad(); // Init the sketchpad part
+	initSound(); // Init the sound part
 }
 		</script>
 		<!-- Libs -->
-		<script src="script/riffwave.js"></script> 
 		<script src="script/jquery-3.2.1.slim.min.js"></script> 
 		<script src="script/popper.min.js"></script> 
 		<script src="script/bootstrap.min.js"></script> 
