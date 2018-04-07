@@ -99,6 +99,10 @@ function rainbow(p) {
 	return HSVtoRGB(p/100.0*0.85, 1.0, 1.0);
 }
 function updateColour(){
+
+	r = 255; g = 255; b = 255;
+	return;
+
 	if (document.getElementById("randomColour").checked){
 		r = randomIntFromInterval(0, 255);
 		g = randomIntFromInterval(0, 255);
