@@ -171,14 +171,18 @@ function getMousePos(e) {
 
 }
 
-function drawHorizontalGrid(canvas, ctx, rowCount){
-	widthRow = Math.round(canvas.height / rowCount);
+function drawHorizontalGrid(canvas, ctx, octaveCount){
+	spanOctave = Math.round(canvas.height / octaveCount);
 	r = 79
 	g = 91
 	b = 102
 	a = 255
-	for (row = 1; row < rowCount; row++){
-		drawLine(ctx, 0, row*widthRow, canvas.width, row*widthRow, 10);
+	for (var octave = 0; octave < octaveCount; octave ++){
+		//drawLine(ctx, 0, octave * spanOctave, canvas.width, octave * spanOctave, 10);
+		for (var line = 0; line < 5; line++){
+			y = octave*spanOctave + line * spanOctave/8;
+			drawLine(ctx, 0, y, canvas.width, y, 5);
+		}
 	}
 }
 
