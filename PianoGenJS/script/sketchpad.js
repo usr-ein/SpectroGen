@@ -172,17 +172,15 @@ function getMousePos(e) {
 }
 
 function drawHorizontalGrid(canvas, ctx, octaveCount){
-	spanOctave = Math.round(canvas.height / octaveCount);
 	r = 79
 	g = 91
 	b = 102
 	a = 255
-	for (var octave = 0; octave < octaveCount; octave ++){
-		//drawLine(ctx, 0, octave * spanOctave, canvas.width, octave * spanOctave, 10);
-		for (var line = 0; line < 5; line++){
-			y = octave*spanOctave + line * spanOctave/8;
+	
+	for (var y = 4*canvas.height/88; y < canvas.height; y += canvas.height/88){
+		var i = Math.round(y * 88 / canvas.height) + 4;
+		if (i % 8 > 0 && i % 8 < 6)
 			drawLine(ctx, 0, y, canvas.width, y, 5);
-		}
 	}
 }
 

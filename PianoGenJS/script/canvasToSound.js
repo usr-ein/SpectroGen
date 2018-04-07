@@ -89,13 +89,17 @@ function playCanvas(bufferList){
 		//var freq = freqFromColour(dot.r, dot.g, dot.b);
 		//var octave = Math.ceil((canvas.height-dot.y)/(canvas.height/5));
 		//playSoundOscillator(freq*octave, noteTime);
-		playSoundOscillator(getFreq(Math.round((1-dot.y/canvas.height)*88)), noteTime);
+		var n = Math.round((1-dot.y/canvas.height)*88);
+		//n = 4; // C1 is n = 4
+		playSoundOscillator(getFreq(n), noteTime);
+		console.log(n);
 	}
 }
 
 function play() {
 	let duration = document.getElementById('soundDuration').value;
 	playCanvas(bufferLoader.bufferList);
+	console.log(getFreq(4));
 }
 
 function save(filename) {
